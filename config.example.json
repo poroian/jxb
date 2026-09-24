@@ -1,0 +1,26 @@
+{
+  "search": ["react", "typescript", "forward deploy", "ai"],
+  "filterTitle": [
+    "-back",
+    "forward deploy",
+    "=frontend",
+    "=front-end",
+    "=front end",
+    "=full stack",
+    "=full-stack",
+    "=fullstack",
+    "=engineer",
+    "=developer",
+    "-staff",
+    "=technical staff",
+    "-intern",
+    "-=manager",
+    "-=director",
+    "-=developer relations"
+  ],
+  "location": "New York, NY",
+  "minSalary": 200000,
+  "remote": false,
+  "postedWithin": "any",
+  "pagesPerKeyword": 3
+}
