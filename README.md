@@ -46,10 +46,8 @@ Stack `-` and `=` to exclude an exact word: `-=staff` drops "Staff Engineer" but
 
 For `filterTitle`, the **last matching entry wins** — list order matters. 
 
-## Test the filters
+## Run tests
 
 ```
 npm test
 ```
-
-Checks `filterTitle` against example job titles in `test/filters.test.js`.
