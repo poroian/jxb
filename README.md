@@ -1,6 +1,8 @@
-# LinkedIn job scraper
+# Job scraper
 
-## Setup (once)
+- supports LinkedIn
+
+## Setup
 
 ```
 npm install
@@ -8,7 +10,7 @@ npx playwright install chromium
 cp config.example.json config.json
 ```
 
-`config.json` is gitignored — it's your own personal search, not shared. Edit it for what you're looking for (see Configure below).
+`config.json` is gitignored as it functions as your on config for sure. Customize to your needs (see Configure below).
 
 ## Run
 
