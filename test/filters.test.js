@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const { makeTitleFilter } = require('../src/filters');
+const { makeTitleFilter, salaryMax } = require('../src/filters');
 
 // Fixed fixture, not the live config — keeps these tests stable and shared across contributors,
 // independent of whatever filterTitle list either person is running locally.
@@ -94,3 +94,10 @@ for (const [group, items] of Object.entries(cases)) {
     }
   });
 }
+
+test('salaryMax', () => {
+  assert.strictEqual(salaryMax('$175K/yr - $300K/yr'), 300000);
+  assert.strictEqual(salaryMax('$209.5K/yr - $246.5K/yr'), 246500);
+  assert.strictEqual(salaryMax('$80/hr'), 166400);
+  assert.strictEqual(salaryMax(''), null);
+});

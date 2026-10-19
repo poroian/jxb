@@ -26,4 +26,13 @@ function makeTitleFilter(rawList) {
   };
 }
 
-module.exports = { parseTerm, parseList, matches, makeTitleFilter };
+// Top of a LinkedIn card salary range as yearly dollars: "$175K/yr - $300K/yr" -> 300000, "$80/hr" -> 166400.
+// Returns null when no salary is listed.
+function salaryMax(text) {
+  const amounts = [...(text || '').matchAll(/\$([\d,.]+)\s*(K)?/gi)].map(m => parseFloat(m[1].replace(/,/g, '')) * (m[2] ? 1000 : 1));
+  if (!amounts.length) return null;
+  const max = Math.max(...amounts);
+  return /\/hr/i.test(text) ? max * 2080 : max;
+}
+
+module.exports = { parseTerm, parseList, matches, makeTitleFilter, salaryMax };

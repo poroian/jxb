@@ -29,8 +29,8 @@ Edit `config.json`:
 - **`search`** — a list of words/phrases, each run as its own LinkedIn search (e.g. `"react"` finds the same jobs as typing "react" into LinkedIn's job search box). This decides which jobs get pulled, since LinkedIn checks it against the full listing (title, description, company, skills) on their end. Results from every entry are combined.
 - **`filterTitle`** — a second pass we run ourselves after `search` returns results, to narrow them further. We only ever see the **job title**, not the description, so this can't filter on anything `search` already missed. Supports the fuller `=` / ordering syntax below.
 - **`location`** — a LinkedIn location string, or an array, e.g. ["New York, NY", "San Francisco, CA", "San Jose, CA"]. Each one runs the full `search` list again, so this multiplies your total requests.
-- **`minSalary`** — rounds down to LinkedIn's nearest $20k filter bucket (so `200000` → the "$200k+" filter). Loose: LinkedIn still returns some jobs under this.
-- **`remote`** — `true` restricts to remote listings.
+- **`minSalary`** — checked by us against the salary shown on each job card: a job is dropped only if its listed range tops out below this. Jobs that don't list a salary are kept.
+- **`remote`** — `true` keeps only listings whose location says "(Remote)". Checked by us, after `search`.
 - **`postedWithin`** — `"24h"`, `"week"`, `"month"`, or `"any"`.
 - **`pagesPerKeyword`** — pages of results to load per `search` entry (~25 jobs/page, so `3` ≈ 75 raw listings per keyword before `filterTitle` trims them). Higher = more results but more requests, more run time, more risk of LinkedIn flagging the account. Recommended: 3–5.
 
